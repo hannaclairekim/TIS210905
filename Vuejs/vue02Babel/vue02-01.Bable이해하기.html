@@ -40,7 +40,25 @@
 </html>
 
 <!-- ES5 사용하기 -->
-
+<script type="text/javascript">
+    var name = "abe";
+    var age = 10;
+    var getMessage = () => {
+        return "Hello, ES5";
+    }
+    document.getElementById("output_es5").innerText() = getMessage;
+</script>
 
 
 <!-- ES2016 사용하기 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js">
+</script>
+<script type="text/babel">
+    const name = "abc";
+    let age = 10;
+
+    const getMessage = () => {
+        return "Hello, ES2016";
+    }
+    document.getElementById("output_es6").innerText() = getMessage();
+</script>

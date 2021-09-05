@@ -78,3 +78,65 @@
 </body>
 
 </html>
+
+<script>
+    // 1. objarray 생성
+    let objarray = [
+        { text: 'One', value: 'A' },
+        { text: 'Two', value: 'B' },
+        { text: 'Three', value: 'C' }
+    ];
+
+    // 2. objarray 에 { text: 'Four', value: 'D' } 를 추가하시오.
+    objarray[objarray.length] = { text: 'Four', value: 'D' };
+
+    // 3. objarray 에서 { text: 'Two', value: 'B' } 를 { text: '2', value: '2' } 로 바꾸시오.
+    let findIndex = objarray.findIndex((item, idx, array) => {
+        return item.text == 'Two';
+    })
+    objarray[findIndex].text = '2';
+    objarray[findIndex].value = '2';
+    console.log(objarray[findIndex]);
+
+    // 4. objarray 에서 filter 메서드를 사용하여 text의 값이 'One' 인 객체들을 찾으시오
+    objarray.filter((val, idx, array) => {
+        if(objarray[idx].text == 'One') {
+            return console.log(objarray[idx]);
+        }
+    });
+
+    // 5. objarray 에서 { text: 'Three', value: 'C' } 를 삭제하시오.
+    let idx = objarray.findIndex((val, idx, array) => {
+        return val.text === 'Three' && val.value === 'C';
+    })
+    console.log(idx);
+    objarray.splice(idx, 1);
+
+    // 6. objarray 에서 map 메서드를 사용하여 no 프로퍼티 추가하시오.
+    objarray = objarray.map((item, idx, array) => {
+        item.no = idx+1;
+        return item;
+    });
+
+    // 7. objarray 에서 reduce 메서드를 사용하여 각 요소의 value 프로퍼티 를 합쳐서 하나의 문자열로 만드시오.
+    // const item = objarray
+    //     .map((item) => {
+    //         return {...item};
+    //     })
+    //     .reduce((prevItem, curItem, idx, array) => {
+    //         prevItem.value = prevItem.value = curItem.value
+    //         return prevItem;
+    //     })
+
+    let txt = '';
+    objarray.reduce((preItem, curItem, idx, array) => {
+        if(preItem != undefined) {
+            txt += (preItem.value + curItem.value);
+        } else {
+            txt += curItem.value;
+        }
+    });
+    console.log(txt);
+    console.log(JSON.stringify(objarray));
+
+</script>
