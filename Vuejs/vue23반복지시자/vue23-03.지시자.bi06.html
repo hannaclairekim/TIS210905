@@ -37,7 +37,7 @@
     <hr>
 
     <div id="app" class="col-md-10 offset-md-1">
-        <table id="list" class="table-bordered">
+        <table id="list" class="table-bordered" style="margin-top: 10px; width: 100%;">
             <thead>
                 <tr class="bg-warning text-white text-center">
                     <th>번호</th>
@@ -46,6 +46,12 @@
                     <th>주소</th>
                 </tr>
             </thead>
+
+            <label for="">이름</label><input v-model:value="name" placeholder="name">
+            <label for="">전화번호</label><input v-model:value="tel" placeholder="tel">
+            <label for="">주소</label><input v-model:value="address" placeholder="address">
+            <button v-on:click="addBtn" style="margin-left: 10px;">추가</button>
+            <button v-on:click="delBtn" style="margin-left: 10px;">제거</button>
             <tbody id="contacts">
                 <tr v-for="(contact, i) in contacts" v-bind:key="i">
                     <td>{{i+1}}</td>
@@ -58,13 +64,52 @@
     </div>
 
 
-    
+
 
 </body>
 
 </html>
 
+
 <!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.6.14/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script>
+    new Vue({
+        /* edtmc^2w */
+        el: "#app",
+        data: {
+            /* 인스턴스 안에서 사용되는 변수 등록, 공유 변수 */
+            contacts: [
+                { name: 'tom misch', tel: '010-1111-2222', address: 'seoul' },
+                { name: 'FKJ', tel: '010-2222-3333', address: 'paris' },
+                { name: 'eminem', tel: '010-3333-4444', address: 'U.S.A' }
+            ],
+            name: '',
+            tel: '',
+            address: ''
+        },
+        //template: ``,
+        methods: {
+            /* 이벤트 핸들러 등록 + 일반 함수 */
+            addBtn() {
+                //this.$data.contacts.push({ name: this.$data.name, tel: this.$data.tel, address: this.$data.address});
+                if(this.$data.name.length == 0 || this.$data.tel.length ==0 || this.$data.address == 0) {
+                    alert('데이터를 입력해주세요');
+                } else {
+                    this.$data.contacts[this.$data.contacts.length] = { name: this.$data.name, tel: this.$data.tel, address: this.$data.address };
+                    this.$data.name = '';
+                    this.$data.tel = '';
+                    this.$data.address = '';
+                }
+            },
+            delBtn() {
+                if(this.$data.contacts.length > 0) {
+                    this.$data.contacts.pop();
+                } else {
+                    alert('지울 주소가 없습니다.');
+                }
+            }
+        }
+    });
 
-
-
+</script>
