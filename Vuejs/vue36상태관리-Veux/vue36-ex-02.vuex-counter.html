@@ -95,6 +95,23 @@
              * 첫번째인자: 무조건 mutations로 고정.
              * 두번째인자: 값. store.dispatch()호출시 넘겨지는 값.
              */
+            getCounter: function(mutations, param) {
+                // import axios from 'axios';
+                axios({
+                    url: 'http://localhost:5050/counter',  // 호출되는 서버 주소.
+                    method: 'get',       // request method: get, post, delete, put
+                    params: { },  // 서버로 보내는 데이터. { data1:'test1', data2:'test2' }
+                    timeout: 30000,    // 최대 대기 시간: 30초. 30초 이상이 되면 fail 부분이 실행됨.
+                    responseType: 'json',  // response로 넘어오는 데이터 형태: text, html, xml, json, jsonp, script
+                })
+                .then( (res) => {
+                    console.log(res.data);
+                    mutations.commit("getCounter", res.data);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+            },
             addCounter: function( mutations/* 고정 */, param ){
                 // import axios from 'axios';
                 axios({
@@ -143,6 +160,9 @@
             subCounter: function(state/* 고정 */, param/* mutations.commit 호출시 넘겨지는 값 */){
                 state.counter = param;
             },
+            getCounter: function(state, param){
+                state.counter = param;
+            }
         },
         state: {
             /* vue인스턴스나 컴포넌트의 data 프로퍼티에 해당 */
@@ -226,6 +246,9 @@
         },
         mounted: function() {
             console.log("mounted");
+
+            //페이지 로딩 후 store에서 값을 가져오도록 설정
+            store.dispatch("getCounter");
         },
         updated: function() {
             console.log("updated");
