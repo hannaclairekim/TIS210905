@@ -135,7 +135,13 @@ export default {
     //template: ``,
     methods: {
         /* 이벤트 핸들러 등록 + 일반 함수 */
-        addTodo: function () {}
+        addTodo: function () {
+            // 부모에게 값 전달
+            this.$emit("addTodo", this.$data.newTodoItem);
+
+            // 입력된 값 제거
+            this.$data.newTodoItem = "";
+        }
     },
     components: {
         /* 전역 컴포넌트는 등록하지 않는다. */

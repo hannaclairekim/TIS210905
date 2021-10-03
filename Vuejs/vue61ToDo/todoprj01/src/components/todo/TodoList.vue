@@ -67,23 +67,28 @@ li.checked {
 <script>
 export default {
     /* pdtmc^2w */
-    props: [],
+    props: ["todoItems"],
     data: function () {
         /* 컴포넌트 안에서 사용되는 변수 등록. 개별 변수 */
-        return {
-            todoItems: {
-                id: "",
-                done: "",
-                todo: ""
-            }
-        };
+        return {};
     },
     //template: ``,
     methods: {
-        /* 이벤트 핸들러 등록 + 일반 함수 */
-        checked: function () {},
-        doneToggle: function () {},
-        removeTodo: function () {}
+        checked(done) {
+            if (done) {
+                return "checked"; // 또는 {checked: true}
+            } else {
+                return ""; // 또는 {checked: false}
+            }
+        },
+        doneToggle(id) {
+            console.log(id);
+            this.$emit("doneToggle", id);
+        },
+        removeTodo(id) {
+            console.log(id);
+            this.$emit("removeTodo", id);
+        }
     },
     components: {
         /* 전역 컴포넌트는 등록하지 않는다. */

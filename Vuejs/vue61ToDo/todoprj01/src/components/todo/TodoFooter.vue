@@ -30,7 +30,9 @@ export default {
     //template: ``,
     methods: {
         /* 이벤트 핸들러 등록 + 일반 함수 */
-        clearAll: function () {}
+        clearAll() {
+            this.$emit("clearAll");
+        }
     },
     components: {
         /* 전역 컴포넌트는 등록하지 않는다. */

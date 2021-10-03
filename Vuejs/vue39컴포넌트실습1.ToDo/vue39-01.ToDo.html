@@ -499,7 +499,7 @@
                 // this.$data.todoItems = [];
                 this.$set( this.$data, 'todoItems', []);
             },
-            removeTodo(id, index){
+            removeTodo(id){
                 // id 값을 이용해서 배열의 index를 찾으시오. ==> findIndex() 사용
                 const findIndex = this.$data.todoItems.findIndex( (item, index, array) =>{
                     return item.id === id;
@@ -533,7 +533,7 @@
                 const newid = maxid + 1;
 
                 const todo = {
-                    addTodoid: newid,
+                    id: newid,
                     todo: newTodoItem,
                     done: false,
                 };
@@ -545,7 +545,7 @@
                 // add 후에 input 태그에 남아있는 입력값 지우기
                 // this.$data.newTodoItem = '';
             },
-            doneToggle(id, index/* 자식 컴포넌트에서 보내는 매개변수 */){
+            doneToggle(id/* 자식 컴포넌트에서 보내는 매개변수 */){
                 // id를 이용해서 배열의 인덱스 찾기 ==> findIndex
                 // done 값을 반전시킨다. this.$data.todoItems[findIndex].done = !this.$data.todoItems[findIndex].done;
                 const findIndex = this.$data.todoItems.findIndex( item => id === item.id );
