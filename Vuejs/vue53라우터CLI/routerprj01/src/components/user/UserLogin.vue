@@ -64,11 +64,18 @@ export default {
     props: [],
     data: function () {
         /* 컴포넌트 안에서 사용되는 변수 등록. 개별 변수 */
-        return {};
+        return {
+            isLogin: "",
+            tmpUser: {
+                uid: "",
+                pwd: ""
+            }
+        };
     },
     //template: ``,
     methods: {
         /* 이벤트 핸들러 등록 + 일반 함수 */
+        login: function () {}
     },
     components: {
         /* 전역 컴포넌트는 등록하지 않는다. */
