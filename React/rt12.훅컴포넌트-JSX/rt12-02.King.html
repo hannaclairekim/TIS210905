@@ -55,3 +55,48 @@
 
 </html>
 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js">
+    /* 자바스크립트로 컴파일러. ES6-->ES5, JSX-->ES5 */
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.12.0/umd/react.development.js">
+    /* import React, { Component, PureComponent } from 'react' */
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.7.2/prop-types.js">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.11.0/umd/react-dom.development.js">
+    /* import ReactDOM from 'react-dom' */
+</script>
+<script type="text/babel">
+    const { useState, useEffect, useRef, useCallback, useMemo, Fragment } = React;
+
+    function KingContainer(props) {
+        const [변수명, set변수명] = useState[{name: '세종대왕', idx: 0}, {name: '이순신', idx: 1}, {name: '광개토', idx:2}, {name: '왕건', idx:3}];
+
+        // const Kings = ['세종대왕', '이순신', '광개토', '왕건'].map ((value, index, values) => {
+        //     return <King name={value} ><span>{index}</span></King>
+        // });
+
+        const Kings = 변수명.map((item, index) => {
+            return <King name={item.name} ><span>{item.idx}</span></King>
+        })
+
+        // JSX로 화면 만들기
+        return (
+            <div>
+                {Kings}
+            </div>
+        )
+    }
+
+    function King(props) {
+        return (
+            <div>
+                {props.name}
+                {props.children}
+            </div>
+        )
+    }
+
+    ReactDOM.render(<KingContainer/>, document.getElementById('app'));
+</script>
