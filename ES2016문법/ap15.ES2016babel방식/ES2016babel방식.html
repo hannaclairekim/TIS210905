@@ -8,22 +8,22 @@
 <body>
 
     <div style="margin: 40px 0 0 30px;">
-        <a href="#" onClick="window.open('../ap01.서버통신/npm사용법.html','npm사용법','width=800,height=400,toolbar=no,menubar=no,scrollbars=no,resizable=yes');return false;" rel="nofollow">npm 사용법</a>
+        <a href="#" onClick="window.open('../ap01.docs/npm사용법.html','npm사용법','width=800,height=400,toolbar=no,menubar=no,scrollbars=no,resizable=yes');return false;" rel="nofollow">npm 사용법</a>
     </div>
     <xmp>
 
     $ node -v
     v12.18.1
 
-    $ mkdir es2015test
+    $ mkdir es2016test
 
     $ pwd
     /d/workspace/Lecture/JavaScript/JavaScriptSource/st51.React/rt03.ES6문법
 
-    $ cd es2015test
+    $ cd es2016test
 
     $ pwd
-    /d/workspace/Lecture/JavaScript/JavaScriptSource/st51.React/rt03.ES6문법/es2015test
+    /d/workspace/Lecture/JavaScript/JavaScriptSource/st51.React/rt03.ES6문법/es2016test
 
     $ npm init
     This utility will walk you through creating a package.json file.
@@ -36,7 +36,7 @@
     save it as a dependency in the package.json file.
 
     Press ^C at any time to quit.
-    package name: (es2015test)
+    package name: (es2016test)
     version: (1.0.0)
     description:
     entry point: (index.js)
@@ -45,10 +45,10 @@
     keywords:
     author:
     license: (ISC)
-    About to write to D:\workspace\Lecture\JavaScript\JavaScriptSource\st51.React\rt03.ES6문법\es2015test\package.json:
+    About to write to D:\workspace\Lecture\JavaScript\JavaScriptSource\st51.React\rt03.ES6문법\es2016test\package.json:
 
     {
-        "name": "es2015test",
+        "name": "es2016test",
         "version": "1.0.0",
         "description": "",
         "main": "index.js",
@@ -67,7 +67,7 @@
 
     $ cat package.json
     {
-        "name": "es2015test",
+        "name": "es2016test",
         "version": "1.0.0",
         "description": "",
         "main": "index.js",
@@ -96,7 +96,7 @@
 
     $ cat package.json
       {
-            "name": "es2015test",
+            "name": "es2016test",
             "version": "1.0.0",
             "description": "",
             "main": "index.js",
@@ -123,18 +123,18 @@
         "presets": ["env", "stage-3"]
     }
 
-    $ mkdir src    # es2015test 폴더에 src 폴더 생성
+    $ mkdir src    # es2016test 폴더에 src 폴더 생성
 
     $ ls -a
     .  ..  .babelrc  node_modules  package.json  package-lock.json  src
 
-    $ es2015test/src 에 07-02.js 파일 생성 후 코드 추가
+    $ es2016test/src 에 07-02.js 파일 생성 후 코드 추가
     let name = "world";
     console.log( `Hello ${name}` );
 
 
     $ 폴더 구조 및 파일 확인
-    \ES2015TEST
+    \es2016TEST
     |   .babelrc
     |   package-lock.json
     |   package.json
@@ -149,7 +149,7 @@
     console.log( `Hello ${name}` );
 
 
-    $ 트랜스컴파일 수행 ==> src 폴더에 있는 js 파일을 es5로 컴파일하여 build 폴더에 추가하시오.
+    $ 트랜스컴파일 수행 ==> src 폴더에 있는 js 파일을 es6로 컴파일하여 build 폴더에 추가하시오.
     $ npx babel src/ -d build/
     src\07-02.js -> build\07-02.js
 
@@ -169,7 +169,7 @@
 
     $ cat packages.json
       {
-        "name": "es2015test",
+        "name": "es2016test",
         "version": "1.0.0",
         "description": "",
         "main": "index.js",
