@@ -94,3 +94,62 @@
 
 </html>
 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js">
+    /* 자바스크립트로 컴파일러. ES6-->ES5, JSX-->ES5 */
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.12.0/umd/react.development.js">
+    /* import React, { Component, PureComponent } from 'react' */
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.7.2/prop-types.js">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.11.0/umd/react-dom.development.js">
+    /* import ReactDOM from 'react-dom' */
+</script>
+<script type="text/babel">
+const { useState, useEffect, useRef, useCallback, useMemo, Fragment } = React;
+
+function CounterContainer(props) {
+    // 컴포넌트의 상태값 설정
+    const [counter, setCounter] = useState(0); // 상태값이 기본타입인 경우
+
+    const callbackCounter= useCallback((param)=> {
+        // state 변경
+        debugger;
+        setCounter(counter + param);
+    }, [counter]);
+
+    // JSX로 화면 만들기
+    return (
+        <div class="styleBackground">
+            <CounterLabel counter={counter} callbackCounter={callbackCounter}></CounterLabel>
+        </div>
+    )
+}
+
+function CounterLabel(props) {
+    // callback 메서드 작성. callback 메서드는 부모의 공유 상태값을 변경하기 위해서 사용된다.
+    const handlerClick = (event)=>{
+        debugger;
+
+        let step = 1;
+        if(event.shiftKey) {
+            step = 10;
+        }
+        props.callbackCounter(step);
+    }
+
+    // JSX로 화면 만들기
+    return (
+        <div>
+            <div class="styleText">
+                {props.counter}
+            </div>
+            <button class="styleButton" onClick={handlerClick}>+</button>
+        </div>
+    )
+}
+
+ReactDOM.render(<CounterContainer></CounterContainer>, document.getElementById("app"));
+
+</script>
